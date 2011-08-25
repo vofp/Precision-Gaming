@@ -16,6 +16,11 @@ class User < ActiveRecord::Base
                        :length     => {:within => 6..40 }
   
   before_save :encrypt_password
+  
+  def feed
+    # This is preliminary. See Chapter 12 for the full implementation.
+    Micropost.where("user_id = ?", id)
+  end
 
   def self.authenticate(email, submitted_password)
     user = find_by_email(email)
@@ -30,6 +35,7 @@ class User < ActiveRecord::Base
   def has_password?(submitted_password)
     self.encrypted_password == encrypt(submitted_password)
   end
+  
 
   private
 
