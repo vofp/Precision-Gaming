@@ -26,6 +26,10 @@ section h1 {
   font-size: 200%;
 }
 
+nav#pagelinks {
+  float: none;
+}
+
 /* Links */
 
 a {
