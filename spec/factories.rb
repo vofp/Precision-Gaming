@@ -21,7 +21,6 @@ end
 Factory.define :micropost do |micropost|
   micropost.content "Foo bar"
   micropost.association :user
-  micropost.association :post
 end
 
 Factory.define :post do |post|

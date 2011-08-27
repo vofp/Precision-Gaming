@@ -4,7 +4,7 @@ describe Micropost do
   before(:each) do
     @user = Factory(:user)
     @topic = Factory(:topic)
-    @post = @user.posts.create({ :content => "value for content", :topic_id => @topic.id})
+    @post = Factory(:post, :user => @user, :topic => @topic)
     @attr = { :content => "value for content", :post_id => @post.id }
   end
 
@@ -38,7 +38,7 @@ describe Micropost do
       @micropost.should respond_to(:post)
     end
 
-    it "should have the right associated user" do
+    it "should have the right associated post" do
       @micropost.post_id.should == @post.id
       @micropost.post.should == @post
     end
