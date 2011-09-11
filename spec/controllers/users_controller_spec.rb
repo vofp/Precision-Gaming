@@ -73,6 +73,7 @@ describe UsersController do
   describe "GET 'show'" do
     before(:each)do
       @user = Factory(:user)
+      @topic = Factory(:topic)
     end
     it "should be successful" do
       get :show, :id => @user.id
@@ -104,12 +105,12 @@ describe UsersController do
       response.should have_selector('td>a', :content => user_path(@user), :href => user_path(@user))
     end
     
-    it "should show the user's microposts" do
-      mp1 = Factory(:micropost, :user => @user, :content => "Foo bar")
-      mp2 = Factory(:micropost, :user => @user, :content => "Baz quux")
+    it "should show the user's posts" do
+      p1 = Factory(:post, :user => @user, :topic => @topic, :content => "Foo bar")
+      p2 = Factory(:post, :user => @user, :topic => @topic, :content => "Something")
       get :show, :id => @user
-      response.should have_selector("span.content", :content => mp1.content)
-      response.should have_selector("span.content", :content => mp2.content)
+      response.should have_selector("span.content", :content => p1.content)
+      response.should have_selector("span.content", :content => p2.content)
     end
     
   end
@@ -173,7 +174,7 @@ describe UsersController do
       end
       it "should have a welcome message" do
         post :create, :user => @attr
-        flash[:success].should =~ /welcome to the sample app/i
+        flash[:success].should =~ /welcome to the Precision Gaming/i
       end
       
       it "should sign the user in" do

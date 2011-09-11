@@ -18,9 +18,14 @@ namespace :db do
                    :password => password,
                    :password_confirmation => password)
     end
+    Topic.create!(:name => "Important", :content => "Important updates will be listed under here")
+    Topic.create!(:name => "Events", :content => "Events will be listed under here")
+    Topic.create!(:name => "Casts", :content => "Uploaded cast games will be listed under here")
+    Topic.create!(:name => "Replays", :content => "Replay files will be listed under here")
+    Topic.create!(:name => "Others", :content => "Everything else will be listed under here")
     User.all(:limit => 6).each do |user|
       50.times do
-        user.microposts.create!(:content => Faker::Lorem.sentence(5))
+        user.posts.create!(:content => Faker::Lorem.sentence(5))
       end
     end
   end
