@@ -4,6 +4,7 @@ PrecisionGaming::Application.routes.draw do
   resources :sessions, :only => [:new, :create, :destroy]
   resources :microposts, :only => [:create, :destroy]
   resources :posts, :only => [:create, :destroy]
+  resources :topics
 
   root :to => "pages#home"
 
@@ -13,7 +14,7 @@ PrecisionGaming::Application.routes.draw do
   match '/signup', :to => 'users#new'
   match '/signin', :to => 'sessions#new'
   match '/signout', :to => 'sessions#destroy'
-  match '/forum', :to => 'pages#forum'
+  match '/forum', :to => 'topics#index'
   
   get "users/new"
   get "pages/home"

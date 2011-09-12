@@ -1,0 +1,6 @@
+<h1><%= @topic.name %></h1>
+<p><%= @topic.content %></p>
+  <table class="posts" summary="Important posts">
+    <%= render @posts %>
+  </table>
+<%= will_paginate @posts %>

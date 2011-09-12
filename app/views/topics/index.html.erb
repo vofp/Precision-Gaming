@@ -1,20 +1,30 @@
+<div onclick="location.href='<%= topic_path(1) %>'" style="cursor: pointer" >
 <h1>Important</h1>
   <table class="posts" summary="Important posts">
     <%= render @important %>
   </table>
+</div>
+<div onclick="location.href='<%= topic_path(2) %>'" style="cursor: pointer" >
 <h1>Events</h1>
   <table class="posts" summary="Event posts">
     <%= render @event %>
   </table>
+</div>
+<div onclick="location.href='<%= topic_path(3) %>'" style="cursor: pointer" >
 <h1>Casts</h1>
   <table class="posts" summary="Casts posts">
     <%= render @cast %>
   </table>
+</div>
+<div onclick="location.href='<%= topic_path(4) %>'" style="cursor: pointer" >
 <h1>Replays</h1>
   <table class="posts" summary="Replays posts">
     <%= render @replay %>
   </table>
+</div>
+<div onclick="location.href='<%= topic_path(5) %>'" style="cursor: pointer" >
 <h1>Others</h1>
   <table class="posts" summary="Others posts">
     <%= render @other %>
   </table>
+</div>
