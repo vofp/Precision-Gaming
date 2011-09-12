@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110827005022) do
+ActiveRecord::Schema.define(:version => 20110912185429) do
 
   create_table "microposts", :force => true do |t|
     t.string   "content"
@@ -23,12 +23,24 @@ ActiveRecord::Schema.define(:version => 20110827005022) do
   add_index "microposts", ["post_id"], :name => "index_microposts_on_post_id"
   add_index "microposts", ["user_id"], :name => "index_microposts_on_user_id"
 
+  create_table "players", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "posts", :force => true do |t|
     t.integer  "topic_id"
     t.text     "content"
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "winner_id"
+    t.integer  "loser_id"
+    t.string   "title"
+    t.string   "location"
+    t.string   "link"
+    t.string   "type"
   end
 
   add_index "posts", ["topic_id"], :name => "index_posts_on_topic_id"
