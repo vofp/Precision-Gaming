@@ -1,7 +1,7 @@
 <tr>
   <% user = cast.user rescue User.find(cast.user_id)%>
   <td class="post" href=<%cast%>>
-    <div onclick="location.href='/casts/19'" style="cursor: pointer" >
+    <div onclick="location.href='<%= cast_path(cast) %>'" style="cursor: pointer" >
     <span class="title"><%= link_to cast.winner.name, cast.winner %> Vs. <%= link_to cast.loser.name, cast.loser %></span><br/>
     <span class="content"><%= cast.content %></span>
     <span class="timestamp">
