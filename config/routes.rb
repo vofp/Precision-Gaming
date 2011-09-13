@@ -3,10 +3,10 @@ PrecisionGaming::Application.routes.draw do
   resources :users
   resources :sessions, :only => [:new, :create, :destroy]
   resources :microposts, :only => [:create, :destroy]
-  resources :posts, :only => [:create, :destroy]
+  resources :posts
   resources :topics
   resources :players
-  resources :casts, :only => [:create, :destroy]
+  resources :casts
 
   root :to => "pages#home"
 

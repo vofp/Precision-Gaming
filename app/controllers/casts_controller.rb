@@ -7,6 +7,10 @@ class CastsController < ApplicationController
     @post.topic_id = params[:id]
   end
 
+  def show
+    @cast = Cast.find(params[:id])
+  end
+
   def create
     Post
     @post = Cast.new(params[:cast])

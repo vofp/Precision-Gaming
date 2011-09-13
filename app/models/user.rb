@@ -19,7 +19,6 @@ class User < ActiveRecord::Base
   before_save :encrypt_password
   
   def feed
-    # This is preliminary. See Chapter 12 for the full implementation.
     Post.where("user_id = ?", id)
   end
 
