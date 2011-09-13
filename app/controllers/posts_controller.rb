@@ -2,11 +2,16 @@ class PostsController < ApplicationController
   before_filter :authenticate
   before_filter :authorized_user, :only => :destroy
 
+  def new
+    @post = Post.new
+    @post.topic_id = params[:id]
+  end
+
   def create
     @post  = current_user.posts.build(params[:post])
     if @post.save
       flash[:success] = "Post created!"
-      redirect_to root_path
+      redirect_to topic_path(@post.topic_id)
     else
       @feed_items = []
       render 'pages/home'

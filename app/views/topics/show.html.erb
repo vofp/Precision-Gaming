@@ -4,3 +4,5 @@
     <%= render @posts %>
   </table>
 <%= will_paginate @posts %>
+
+<%= link_to "Create new post", :controller => "posts", :action => "new", :id => @topic.id %>

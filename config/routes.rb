@@ -15,6 +15,7 @@ PrecisionGaming::Application.routes.draw do
   match '/signin', :to => 'sessions#new'
   match '/signout', :to => 'sessions#destroy'
   match '/forum', :to => 'topics#index'
+  match "/posts/new/:id" => "posts#new"
   
   get "users/new"
   get "pages/home"
