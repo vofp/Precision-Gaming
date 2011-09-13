@@ -1,6 +1,7 @@
 <tr>
   <% user = cast.user rescue User.find(cast.user_id)%>
   <td class="post" href=<%cast%>>
+    <span class="title"><%= link_to cast.winner.name, cast.winner %> Vs. <%= link_to cast.loser.name, cast.loser %></span><br/>
     <span class="content"><%= cast.content %></span>
     <span class="timestamp">
       Posted by <%= link_to user.name, user %> <%= time_ago_in_words(cast.created_at) %> ago.
