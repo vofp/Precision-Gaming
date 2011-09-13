@@ -1,6 +1,21 @@
 <%= form_for @post do |f| %>
   <%= render 'shared/error_messages', :object => f.object %>
   <div class="field">
+    <% if @post.topic_id == 3 %>
+      <div class="field">
+        <%= f.label :winner_name %><br />
+        <%= text_field_with_auto_complete :post,:winner_name,{},{:url => players_path(:js), :method => :get, :param_name => 'search' }%>
+      </div>
+      <div class="field">
+        <%= f.label :loser_name %><br />
+        <%= text_field_with_auto_complete :post,:loser_name,{},:url => players_path(:js), :method => :get, :param_name => 'search'%>
+      </div>
+      <div class="field">
+        <%= f.label :link %><br />
+        <%=  f.text_field :link%>
+      </div>
+    <% end %>
+
     <%= f.text_area :content %>
     <%= f.hidden_field :topic_id %>
   </div>

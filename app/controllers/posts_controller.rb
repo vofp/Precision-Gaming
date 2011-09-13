@@ -3,18 +3,34 @@ class PostsController < ApplicationController
   before_filter :authorized_user, :only => :destroy
 
   def new
-    @post = Post.new
+    if params[:id] == "3"
+      Post
+      @post = Cast.new
+      puts @post
+    else
+      @post = Post.new
+    end
     @post.topic_id = params[:id]
   end
 
   def create
-    @post  = current_user.posts.build(params[:post])
+    puts params[:post]
+    if params[:post][:topic_id] == "3"
+      Post
+      @post = Cast.new(params[:post])
+      @post.user = current_user
+    else
+
+      @post  = current_user.posts.build(params[:post])
+    end
     if @post.save
       flash[:success] = "Post created!"
       redirect_to topic_path(@post.topic_id)
     else
-      @feed_items = []
-      render 'pages/home'
+      error = @post.save
+      @post  = current_user.posts.build(params[:post])
+      @post.errors = error
+      render :action => "new", :id => params[:post][:topic_id]
     end
   end
 

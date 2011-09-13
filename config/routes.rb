@@ -5,6 +5,8 @@ PrecisionGaming::Application.routes.draw do
   resources :microposts, :only => [:create, :destroy]
   resources :posts, :only => [:create, :destroy]
   resources :topics
+  resources :players
+  resources :casts, :only => [:create, :destroy]
 
   root :to => "pages#home"
 

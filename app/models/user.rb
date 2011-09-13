@@ -36,7 +36,10 @@ class User < ActiveRecord::Base
   def has_password?(submitted_password)
     self.encrypted_password == encrypt(submitted_password)
   end
-  
+
+  def casts
+    Cast.where("user_id = ?", id)
+  end
 
   private
 
