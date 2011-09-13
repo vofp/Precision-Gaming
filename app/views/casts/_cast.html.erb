@@ -1,0 +1,16 @@
+<tr>
+  <% user = cast.user rescue User.find(cast.user_id)%>
+  <td class="post" href=<%cast%>>
+    <span class="content"><%= cast.content %></span>
+    <span class="timestamp">
+      Posted by <%= link_to user.name, user %> <%= time_ago_in_words(cast.created_at) %> ago.
+    </span>
+  </td>
+  <% if current_user?(cast.user) %>
+  <td>
+    <%= link_to "delete", cast, :method => :delete,
+                                     :confirm => "You sure?",
+                                     :title => cast.content %>
+  </td>
+  <% end %>
+</tr>
