@@ -14,7 +14,7 @@ class Player < ActiveRecord::Base
     url = sc2ranks_link
     doc = Nokogiri::HTML(open(url))
     doc.css(".leagues .shadow").each do |item|
-      text += item.at_css(".headertext").text+"\n"
+      text += item.at_css(".headertext").text+"<br />"
       a = {}
       item.css(".divisionrank").each do |rank|
         number = rank.at_css(".number").text
@@ -23,7 +23,7 @@ class Player < ActiveRecord::Base
       end
       i = 0
       a.keys.sort.each {|number|
-        text += "Rank #{number} of #{a[number]}\n" if 3 > i
+        text += "Rank #{number} of #{a[number]}<br />" if 3 > i
         i+=1
       }
     end
