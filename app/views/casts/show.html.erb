@@ -1,3 +1,9 @@
 <h1><%= link_to @cast.winner.name, @cast.winner %> Vs. <%= link_to @cast.loser.name, @cast.loser %></h1>
 
+<span class="content"><%= @cast.content %></span><br/>
+<% user = @cast.user rescue User.find(@cast.user_id)%>
+<span class="timestamp">
+  Posted by <%= link_to user.name, user %> <%= time_ago_in_words(@cast.created_at) %> ago.
+</span>
+
 <iframe title="YouTube video player" width="480" height="390" src="http://www.youtube.com/embed/<%= @cast.link %>" frameborder="0" allowfullscreen></iframe>
