@@ -1,4 +1,28 @@
 <tr>
+  <td>
+  <%= link_to cast.winner.name, cast.winner %><br/>
+  <% if cast.winner_race == 1 then%>
+    <%= image_tag('Protoss_2.png', :size => "160x160" ) %>
+  <% elsif cast.winner_race == 2 then%>
+    <%= image_tag('Terran_2.png', :size => "160x160") %>
+  <% elsif cast.winner_race == 3 then%>
+    <%= image_tag('Zerg_2.png', :size => "160x160") %>
+  <% end %>
+  </td>
+  <td>
+    <%= image_tag('vs_icon.jpg') %>
+  </td>
+  <td>
+  <%= link_to cast.loser.name, cast.loser %><br/>
+  <% if cast.loser_race == 1 then%>
+    <%= image_tag('Protoss_2.png', :size => "160x160" ) %>
+  <% elsif cast.loser_race == 2 then%>
+    <%= image_tag('Terran_2.png', :size => "160x160") %>
+  <% elsif cast.loser_race == 3 then%>
+    <%= image_tag('Zerg_2.png', :size => "160x160") %>
+  <% end %>
+  </td>
+
   <% user = cast.user rescue User.find(cast.user_id)%>
   <td class="post" href=<%cast%>>
     <div onclick="location.href='<%= cast_path(cast) %>'" style="cursor: pointer" >
