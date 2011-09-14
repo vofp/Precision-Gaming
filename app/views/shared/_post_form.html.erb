@@ -7,8 +7,20 @@
         <%= text_field_with_auto_complete :post,:winner_name,{},{:url => players_path(:js), :method => :get, :param_name => 'search' }%>
       </div>
       <div class="field">
+        <%= f.label :winner_race %><br />
+        <%= f.select(:winner_race, [['Protoss', 1], ['Terran', 2], ['Zerg',3]]) %>
+      </div>
+      <div class="field">
         <%= f.label :loser_name %><br />
         <%= text_field_with_auto_complete :post,:loser_name,{},:url => players_path(:js), :method => :get, :param_name => 'search'%>
+      </div>
+      <div class="field">
+        <%= f.label :loser_race %><br />
+        <%= f.select(:loser_race, [['Protoss', 1], ['Terran', 2], ['Zerg',3]]) %>
+      </div>
+      <div class="field">
+        <%= f.label :game_type %><br />
+        <%= f.select(:game_type, [['1 vs 1', '1 vs 1'], ['2 vs 2', '2 vs 2'], ['3 vs 3','3 vs 3'],['4 vs 4','4 vs 4']]) %>
       </div>
       <div class="field">
         <%= f.label :link %><br />
@@ -16,7 +28,7 @@
         <%=  f.text_field :link%>
       </div>
     <% end %>
-
+    <%= f.label :content %><br />
     <%= f.text_area :content %>
     <%= f.hidden_field :topic_id %>
   </div>
