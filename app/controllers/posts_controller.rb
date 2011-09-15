@@ -34,6 +34,13 @@ class PostsController < ApplicationController
     end
   end
 
+  def show
+    @post = Post.find(params[:id])
+    @microposts = @post.microposts.paginate(:page => params[:page],:per_page => 10)
+    @micropost = Micropost.new
+    @micropost.post_id = @post.id
+  end
+
   def destroy
     @post.destroy
     flash[:success] = "Post deleted!"

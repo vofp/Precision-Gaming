@@ -6,7 +6,11 @@ class MicropostsController < ApplicationController
     @micropost  = current_user.microposts.build(params[:micropost])
     if @micropost.save
       flash[:success] = "Micropost created!"
-      redirect_to root_path
+      if (@micropost.post.is_cast?)
+        redirect_to cast_path(@micropost.post_id)
+      else
+        redirect_to post_path(@micropost.post_id)
+      end
     else
       @feed_items = []
       render 'pages/home'

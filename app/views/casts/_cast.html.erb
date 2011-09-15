@@ -1,5 +1,6 @@
 <tr>
   <td>
+    <div onclick="location.href='<%= cast_path(cast) %>'" style="cursor: pointer" >
   <%= link_to cast.winner.name, cast.winner %><br/>
   <% if cast.winner_race == 1 then%>
     <%= image_tag('Protoss_2.png', :size => "100x100" ) %>
@@ -8,11 +9,13 @@
   <% elsif cast.winner_race == 3 then%>
     <%= image_tag('Zerg_2.png', :size => "100x100") %>
   <% end %>
+    </div>
   </td>
   <td>
     <%= image_tag('vs_icon.jpg') %>
   </td>
   <td>
+    <div onclick="location.href='<%= cast_path(cast) %>'" style="cursor: pointer" >
   <%= link_to cast.loser.name, cast.loser %><br/>
   <% if cast.loser_race == 1 then%>
     <%= image_tag('Protoss_2.png', :size => "100x100" ) %>
@@ -21,10 +24,11 @@
   <% elsif cast.loser_race == 3 then%>
     <%= image_tag('Zerg_2.png', :size => "100x100") %>
   <% end %>
+    </div>
   </td>
 
   <% user = cast.user rescue User.find(cast.user_id)%>
-  <td class="post" href=<%cast%>>
+  <td class="post" >
     <div onclick="location.href='<%= cast_path(cast) %>'" style="cursor: pointer" >
     <span class="title"><%= link_to cast.winner.name, cast.winner %> Vs. <%= link_to cast.loser.name, cast.loser %></span><br/>
     <span class="content"><%= cast.content %></span>

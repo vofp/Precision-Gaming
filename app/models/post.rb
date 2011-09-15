@@ -11,4 +11,9 @@ class Post < ActiveRecord::Base
   validates :user_id, :presence => true
   validates :topic_id, :presence => true
   default_scope :order => 'posts.created_at DESC'
+
+  def is_cast?
+    topic_id == 3
+  end
+
 end

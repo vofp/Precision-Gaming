@@ -1,10 +1,12 @@
 <tr>
   <% user = post.user rescue User.find(post.user_id)%>
-  <td class="post" href=<%post%>>
+  <td class="post" >
+    <div onclick="location.href='<%= post_path(post) %>'" style="cursor: pointer" >
     <span class="content"><%= post.content %></span>
     <span class="timestamp">
       Posted by <%= link_to user.name, user %> <%= time_ago_in_words(post.created_at) %> ago.
     </span>
+    </div>
   </td>
   <% if current_user?(post.user) %>
   <td>

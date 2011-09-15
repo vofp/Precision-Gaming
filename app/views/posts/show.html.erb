@@ -1,0 +1,24 @@
+<% user = @post.user rescue User.find(@post.user_id)%>
+<table>
+<tr><h1><%= @post.title %></h1></tr>
+<tr>
+<td>
+<span class="content"><%= @post.content %></span><br/>
+<span class="timestamp">
+  Posted by <%= link_to user.name, user %> <%= time_ago_in_words(@post.created_at) %> ago.
+</span>
+<% if current_user?(@post.user) %>
+</td>
+  <td>
+    <%= link_to "delete", @post, :method => :delete,
+                                     :confirm => "You sure?",
+                                     :title => @post.content %>
+  </td>
+<% end %>
+</tr>
+  <tr>
+  <%= render @microposts %>
+  </tr>
+</table>
+<%= will_paginate @microposts %>
+<%= render 'shared/micropost_form' %>

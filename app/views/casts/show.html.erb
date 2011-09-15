@@ -7,3 +7,11 @@
 </span>
 
 <iframe title="YouTube video player" width="480" height="390" src="http://www.youtube.com/embed/<%= @cast.link %>" frameborder="0" allowfullscreen></iframe>
+
+<table>
+  <tr>
+  <%= render @microposts %>
+  </tr>
+</table>
+<%= will_paginate @microposts %>
+<%= render 'shared/micropost_form' %>

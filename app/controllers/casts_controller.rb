@@ -9,6 +9,9 @@ class CastsController < ApplicationController
 
   def show
     @cast = Cast.find(params[:id])
+    @microposts = @cast.microposts.paginate(:page => params[:page],:per_page => 10)
+    @micropost = Micropost.new
+    @micropost.post_id = @cast.id
   end
 
   def create
